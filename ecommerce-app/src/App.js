@@ -1,17 +1,24 @@
-import React from 'react';
-import './App.css';
-import Navbar from './components/Navbar';
-import ProductList from './components/ProductList';
-import Searchbar from './components/Searchbar';
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import "./App.css";
+import Registration from "./pages/Registration";
+import Login from "./pages/Login"
+import { UserContextProvider } from "./context/userContext";
 
 function App() {
-  
   return (
     <div className="App">
-      <Navbar />
-      <Searchbar />
-      <ProductList />
+      <UserContextProvider>
+      <Router>
+      <Routes>
+      < Route path="/" element={<Home/>}/>
+      < Route path="/login" element={<Login />}/>
+      < Route path="/register" element={<Registration/>}/>
+      </Routes>
+     </Router>
+      </UserContextProvider>
+
     </div>
   );
 }
