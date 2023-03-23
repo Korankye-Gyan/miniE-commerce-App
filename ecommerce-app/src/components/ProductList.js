@@ -1,5 +1,5 @@
 import React from 'react'
-import Product from './Product'
+import Product from '../pages/Product'
 const ProductList = () => {
     const products = [
         //products array starts here
