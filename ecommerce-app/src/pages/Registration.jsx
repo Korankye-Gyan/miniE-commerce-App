@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import SecNavbar from "../components/SecNavbar";
 import { UserContext } from "../context/userContext";
 
 export default function Registration(props) {
   const { formik } = useContext(UserContext);
 
-  console.log(formik.values);
   return (
     <div>
       <SecNavbar />

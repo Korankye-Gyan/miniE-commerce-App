@@ -1,7 +1,9 @@
-import React from 'react';
+import React , {useContext} from 'react';
+import { UserContext } from '../context/userContext';
 
 function Navbar() {
   
+  const { loggedIn} = useContext(UserContext)
   /* Navigation Bar starts */
   return (
     <div className='navMenu'>
@@ -15,7 +17,7 @@ function Navbar() {
         <a href=''>Cart</a>
       </div>
       <div>
-        <button>Login</button>
+        <button>{loggedIn ? "logout" :"Login"}</button>
       </div>
     </div>
   );
