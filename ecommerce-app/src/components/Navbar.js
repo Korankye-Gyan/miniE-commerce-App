@@ -7,8 +7,8 @@ function Navbar() {
   /* Navigation Bar starts */
   return (
     <div className='navMenu'>
-      <div className='logo'>
-        Azubi <span className='brand'>FrontEnd</span>
+      <div>
+        <img src='img/logo.svg' alt='logo'/>
       </div>
       <div className='menu'>
         <a href='' className='home'>
