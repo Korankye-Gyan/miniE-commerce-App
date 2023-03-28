@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 // import Button from "../components/Button";
-import SecNavbar from "../components/SecNavbar";
-import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 import Home from "./Home";
 
@@ -13,7 +13,7 @@ export default function Login() {
   return (
     <div>
 { loggedIn ? <Home/> :   <div className="">
-      <SecNavbar data={loginPage} datafunc={setLoginPage} />
+      <Navbar data={loginPage} datafunc={setLoginPage} />
 
       <h1 className="text-center text-2xl font-bold pt-32">Sign in</h1>
       <div className="flex justify-center items-center h-64">
