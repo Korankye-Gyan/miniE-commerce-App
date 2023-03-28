@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import SecNavbar from "../components/SecNavbar";
+import Navbar from "../components/Navbar";
 import { UserContext } from "../context/userContext";
 
 export default function Registration(props) {
@@ -7,7 +7,7 @@ export default function Registration(props) {
 
   return (
     <div>
-      <SecNavbar />
+      <Navbar />
 
       <h1 className="text-center text-2xl font-bold pt-32">
         Create an account
@@ -78,3 +78,5 @@ export default function Registration(props) {
     </div>
   );
 }
+
+
