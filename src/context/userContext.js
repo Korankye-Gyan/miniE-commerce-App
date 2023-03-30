@@ -58,7 +58,10 @@ const [ loggedIn, setLoggedIn] = useState(false)
 
   let user = JSON.parse(localStorage.getItem("values"));
   
-
+  function logOut() {
+    setLoggedIn(false)
+    window.localStorage.clear()
+  }
 
 
   useEffect(() => {});
@@ -89,7 +92,7 @@ const [ loggedIn, setLoggedIn] = useState(false)
   //   }
 
   return (
-    <UserContext.Provider value={{ formik, formikLogin , registered , loggedIn}}>
+    <UserContext.Provider value={{ formik, formikLogin , registered , loggedIn , logOut}}>
       {props.children}
     </UserContext.Provider>
   );

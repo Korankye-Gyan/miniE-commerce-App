@@ -1,9 +1,18 @@
-import React from 'react';
+import React , {useContext} from 'react';
+import { UserContext } from '../context/userContext';
 import Button from './Button';
 import { Link, NavLink, useLocation} from 'react-router-dom';
 
 function Navbar() {
   const location = useLocation()
+  const { loggedIn , logOut} = useContext(UserContext)
+  console.log(loggedIn);
+
+  function handleLogout () {
+    if (loggedIn){
+      logOut()
+    }
+  }
   return (
     <div className='navMenu mx-8 mt-1 shadow-md'>
       <div>
@@ -47,9 +56,9 @@ function Navbar() {
           {location.pathname === '/login' &&
             
           <div className="flex items-center gap-4">
-            <span >New to Azubi Shop?</span>
+            <span >{loggedIn ? null :"Already have an account ?"}</span>
             <Link to='/register'>
-              <button className='focus:outline-none  text-black font-bold bg-stone-100' >Create an Account</button>
+              <button className='focus:outline-none  text-black font-bold bg-stone-100' onClick={handleLogout} >{loggedIn ? "logout" : "Create an Account"}</button>
             </Link>
           </div>
         }
