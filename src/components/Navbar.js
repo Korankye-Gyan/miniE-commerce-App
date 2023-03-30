@@ -5,7 +5,7 @@ import { Link, NavLink, useLocation} from 'react-router-dom';
 function Navbar() {
   const location = useLocation()
   return (
-    <div className='navMenu mx-8 mt-1 shadow-xl'>
+    <div className='navMenu mx-8 mt-1 shadow-md'>
       <div>
         <Link to= '/'>
         <img src='img/logo.svg' alt='logo' style={{width:'80%'}}/>
@@ -33,8 +33,8 @@ function Navbar() {
       {<div>
         {location.pathname === "/" &&
           <div className=''>
-                <Link to= '/login'>
-             <button className='focus:outline-none capitalize font-bold hover:bg-blue-900'>login</button>
+            <Link to= '/login'>
+              <Button name='Login'/>
             </Link>
           </div> }
       </div>
@@ -57,7 +57,7 @@ function Navbar() {
             <div className="flex items-center gap-4 focus:outline-none">
             <span>Already have an account ?</span>
             <Link to= '/login'>
-             <button className='focus:outline-none capitalize font-bold hover:bg-blue-900'>login</button>
+            <Button name='Login'/>
             </Link>
           </div>
           }
