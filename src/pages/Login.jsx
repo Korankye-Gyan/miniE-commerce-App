@@ -9,10 +9,9 @@ export default function Login() {
   const [loginPage, setLoginPage] = useState(true);
   const { formikLogin, loggedIn } = useContext(UserContext);
 
-  console.log(loggedIn);
   return (
     <div>
-{ loggedIn ? <Home/> :   <div className="">
+  <div className="">
       <Navbar data={loginPage} datafunc={setLoginPage} />
 
       <h1 className="text-center text-2xl font-bold pt-32">Sign in</h1>
@@ -62,7 +61,7 @@ export default function Login() {
           </button>
         </form>
       </div>
-    </div>}
+    </div>
     </div>
 
   );

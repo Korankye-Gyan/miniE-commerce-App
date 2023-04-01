@@ -1,80 +1,55 @@
-import React , {useContext} from 'react';
-import { UserContext } from '../context/userContext';
-import Button from './Button';
-import { Link, NavLink, useLocation} from 'react-router-dom';
+import React, { useContext, useState } from "react";
+import { UserContext } from "../context/userContext";
+import Button from "./Button";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
 function Navbar() {
-  const location = useLocation()
-  const { loggedIn , logOut} = useContext(UserContext)
+  const location = useLocation();
+  const Navigate = useNavigate();
+  const { loggedIn, logOut, handlePlaceOrder } = useContext(UserContext);
   console.log(loggedIn);
-
-  function handleLogout () {
-    if (loggedIn){
-      logOut()
-    }
+  function handleLogin() {
+    Navigate("/login");
   }
+
   return (
-    <div className='navMenu mx-8 mt-1 shadow-md'>
+    <div className="navMenu  px-10  shadow-md">
       <div>
-        <Link to= '/'>
-        <img src='img/logo.svg' alt='logo' style={{width:'80%'}}/>
-        </Link> 
+        <Link to="/">
+          <img src="img/logo.svg" alt="logo" style={{ width: "80%" }} />
+        </Link>
       </div>
-      {/* Home and Cart div */}
-     { <div>
-        {
-          location.pathname === "/" &&
-          <div className='menu'>
-            <NavLink to='/' className="mt-2">
-             <span className='font-bold hover:text-blue-800'>Home</span>
-           </NavLink>
-           <NavLink to ='/Cart' className="mt-2">
-           <span className='font-bold hover:text-blue-800'>Cart</span>
+      {location.pathname === "/login" ||
+      location.pathname === "/register" ? null : (
+        <div className="menu">
+          <NavLink to="/" className="mt-2">
+            <span className="font-bold hover:text-blue-800">Home</span>
           </NavLink>
-             
-       </div>
-          }
-          
-          
-      </div>
-      }
-      {/* login div */}
-      {<div>
-        {location.pathname === "/" &&
-          <div className=''>
-            <Link to= '/login'>
-              <Button name='Login'/>
-            </Link>
-          </div> }
-      </div>
-         
-      }
-      
-      {/* Register and login Div */}
-      {
-        <div>
-          {location.pathname === '/login' &&
-            
-          <div className="flex items-center gap-4">
-            <span >{loggedIn ? null :"Already have an account ?"}</span>
-            <Link to='/register'>
-              <button className='focus:outline-none  text-black font-bold bg-stone-100' onClick={handleLogout} >{loggedIn ? "logout" : "Create an Account"}</button>
-            </Link>
-          </div>
-        }
-          {location.pathname === '/register'&&
-            <div className="flex items-center gap-4 focus:outline-none">
-            <span>Already have an account ?</span>
-            <Link to= '/login'>
-            <Button name='Login'/>
-            </Link>
-          </div>
-          }
-      </div>
-      }
-        
-      
-      
+          <NavLink to="/Cart" className="mt-2">
+            <span className="font-bold hover:text-blue-800">Cart</span>
+          </NavLink>
+        </div>
+      )}
+
+      {location.pathname === "/login" ? (
+        <div className="">
+          <Link to="/register" className="flex items-center">
+            <p className="mr-5">New to Azubi shop?</p>
+            <Button name="Register" loggedin={loggedIn} login={handleLogin} />
+          </Link>
+        </div>
+      ) : location.pathname === "/register" ? (
+        <Link to="/login" className="flex items-center">
+          <p className="mr-5">Already have an account ?</p>
+          <Button name="Log in" />
+        </Link>
+      ) : (
+        <Button
+          name={loggedIn ? "log out" : "Login"}
+          loggedin={loggedIn}
+          login={handleLogin}
+        />
+      )}
     </div>
   );
 }
