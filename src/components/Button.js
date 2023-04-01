@@ -33,7 +33,7 @@ const Button = ({ data, name, home, style, login }) => {
             ? details
             : name === "log out"
             ? logOut
-            : home
+            : name === "Login" ? login  : home
         }
       >
         {name}

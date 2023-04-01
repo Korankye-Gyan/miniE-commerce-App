@@ -6,13 +6,12 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 function Navbar() {
   const location = useLocation();
   const Navigate = useNavigate();
-  const { loggedIn, logOut , handlePlaceOrder } = useContext(UserContext);
+  const { loggedIn, logOut, handlePlaceOrder } = useContext(UserContext);
   console.log(loggedIn);
   function handleLogin() {
-    Navigate('/login')
-  
+    Navigate("/login");
   }
- 
+
   return (
     <div className="navMenu  px-10  shadow-md">
       <div>
@@ -42,18 +41,13 @@ function Navbar() {
       ) : location.pathname === "/register" ? (
         <Link to="/login" className="flex items-center">
           <p className="mr-5">Already have an account ?</p>
-          <Button
-            name="Log in"
-     
-          />
+          <Button name="Log in" />
         </Link>
       ) : (
         <Button
           name={loggedIn ? "log out" : "Login"}
           loggedin={loggedIn}
           login={handleLogin}
-        
-          
         />
       )}
     </div>
