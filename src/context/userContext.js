@@ -67,7 +67,7 @@ const [place, setPlace] =useState(false)
   function logOut() {
     setLoggedIn(false)
     setPlace(false)
-    window.localStorage.clear()
+    
     navigate('/login')
  
   }
