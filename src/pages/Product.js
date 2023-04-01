@@ -1,8 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React,{useContext} from "react";
+import { Link , useNavigate} from "react-router-dom";
 import Button from "../components/Button";
+import {ShopContext} from "../context/cardContext"
+
 
 const Product = ({ product }) => {
+  const { handlePlaceOrder , placeOrder} = useContext(ShopContext)
+const Navigate = useNavigate()
+  function handleLogin() {
+    Navigate('/login')
+  
+  }
+ 
   return (
     <div className="items">
       <img
@@ -13,9 +22,9 @@ const Product = ({ product }) => {
       <h4>{product.name}</h4>
       <p>{product.desc}</p>
       <div className="order">
-        <Link to="/login">
-        <Button name="Place Order" />
-        </Link>
+        {/* <Link to={placeOrder ? "/details" : "/login"}> */}
+        <Button data={product} id={product.id} home={handleLogin} name="Place Order" placeorder={handlePlaceOrder}  />
+        {/* </Link> */}
         <p>${product.price.toFixed(2)}</p>
       </div>
     </div>

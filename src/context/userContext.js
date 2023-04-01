@@ -1,12 +1,16 @@
 import { createContext, useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext("");
 
 export function UserContextProvider(props) {
+const navigate = useNavigate()
   const [registered, setRegistered] = useState(false);
 const [ loggedIn, setLoggedIn] = useState(false)
+const [place, setPlace] =useState(false)
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -49,7 +53,9 @@ const [ loggedIn, setLoggedIn] = useState(false)
             ) {
               console.log(" logged in");
                 setLoggedIn(true)
+                setPlace(true)
               resetForm({ values: "" });
+               navigate('/')
 
             }
           
@@ -60,7 +66,10 @@ const [ loggedIn, setLoggedIn] = useState(false)
   
   function logOut() {
     setLoggedIn(false)
+    setPlace(false)
     window.localStorage.clear()
+    navigate('/login')
+ 
   }
 
 
@@ -92,7 +101,7 @@ const [ loggedIn, setLoggedIn] = useState(false)
   //   }
 
   return (
-    <UserContext.Provider value={{ formik, formikLogin , registered , loggedIn , logOut}}>
+    <UserContext.Provider value={{ formik, formikLogin , registered , loggedIn , logOut, place}}>
       {props.children}
     </UserContext.Provider>
   );

@@ -1,23 +1,28 @@
-import { createContext , useState } from "react";
+import { createContext, useState, useContext } from "react";
+import { UserContext } from "./userContext";
+import { useNavigate } from "react-router-dom";
 
-export const ShopContext = createContext("")
+export const ShopContext = createContext("");
 
 export function ShopContextProvider(props) {
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const Navigate = useNavigate();
+  const [placeOrder, setPlaceOrder] = useState(false);
+  const [details, setDetails] = useState({});
 
-    console.log(isLoggedIn);
-    function handleIsLoggedIn(){
-      setIsLoggedIn(false)
-    }
+  function handlePlaceOrder(dets) {
+    
+    console.log(dets);
+    let data = JSON.parse(dets)
+    setPlaceOrder(true);
 
-    const contextValue = {
-        isLoggedIn,
-        handleIsLoggedIn
-    }
+    setDetails(data);
+    Navigate("/details");
+    // alert('hi')
+  }
 
-    return (
-        <ShopContext.Provider value={contextValue}>
-            {props.children}
-        </ShopContext.Provider>
-    )
+  return (
+    <ShopContext.Provider value={{ handlePlaceOrder, placeOrder, details }}>
+      {props.children}
+    </ShopContext.Provider>
+  );
 }
