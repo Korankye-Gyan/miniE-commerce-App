@@ -5,7 +5,6 @@ import Button from "../components/Button";
 
 export default function Details() {
   const { details ,addToCart} = useContext(ShopContext); 
-  console.log(details);
   
 
   function handleAddToCart() {

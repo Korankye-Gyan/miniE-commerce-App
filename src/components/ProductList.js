@@ -65,7 +65,7 @@ const ProductList = () => {
     //Product List component logic starts here
     const productList = products.map(product => <Product key={product.id} product = {product} />) 
     //Product List component logic ends here
-  return <div className='container'>{productList}</div> 
+  return <div className='grid place-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>{productList}</div> 
 
 }
 

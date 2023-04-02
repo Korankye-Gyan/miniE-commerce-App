@@ -29,14 +29,14 @@ align-items: center;
 justify-content: space-between;
 width: 100%;
 }
-button{
+.btn{
   background-color: #001066;
   color: #ffffff;
   padding: 8px 30px;
   border-radius: 5px;
   border-style: none;
 }
-button:hover{
+.btn:hover{
   cursor: pointer;
 }
 .menu{
