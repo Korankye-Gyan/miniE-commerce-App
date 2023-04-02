@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 export const UserContext = createContext("");
 
 export function UserContextProvider(props) {
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const [registered, setRegistered] = useState(false);
-const [ loggedIn, setLoggedIn] = useState(false)
-const [place, setPlace] =useState(false)
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [place, setPlace] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -33,7 +33,6 @@ const [place, setPlace] =useState(false)
     },
   });
 
-
   const formikLogin = useFormik({
     initialValues: {
       email: "",
@@ -42,36 +41,27 @@ const [place, setPlace] =useState(false)
 
     validationSchema: Yup.object({
       email: Yup.string().email("email is invalid").required(),
-      password: Yup.string().required("Password is required")
-
+      password: Yup.string().required("Password is required"),
     }),
     onSubmit: (values, { resetForm }) => {
-        
-            if (
-              values.email === user.email &&
-              values.password === user.password
-            ) {
-              console.log(" logged in");
-                setLoggedIn(true)
-                setPlace(true)
-              resetForm({ values: "" });
-               navigate('/')
-
-            }
-          
+      if (values.email === user.email && values.password === user.password) {
+        console.log(" logged in");
+        setLoggedIn(true);
+        setPlace(true);
+        resetForm({ values: "" });
+        navigate("/");
+      }
     },
   });
 
   let user = JSON.parse(localStorage.getItem("values"));
-  
-  function logOut() {
-    setLoggedIn(false)
-    setPlace(false)
-    
-    navigate('/login')
- 
-  }
 
+  function logOut() {
+    setLoggedIn(false);
+    setPlace(false);
+
+    navigate("/login");
+  }
 
   useEffect(() => {});
 
@@ -101,7 +91,9 @@ const [place, setPlace] =useState(false)
   //   }
 
   return (
-    <UserContext.Provider value={{ formik, formikLogin , registered , loggedIn , logOut, place}}>
+    <UserContext.Provider
+      value={{ formik, formikLogin, registered, loggedIn, logOut, place }}
+    >
       {props.children}
     </UserContext.Provider>
   );
