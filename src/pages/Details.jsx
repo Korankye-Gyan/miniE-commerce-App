@@ -4,8 +4,14 @@ import { ShopContext } from "../context/cardContext";
 import Button from "../components/Button";
 
 export default function Details() {
-  const { details } = useContext(ShopContext); 
+  const { details ,addToCart} = useContext(ShopContext); 
   console.log(details);
+  
+
+  function handleAddToCart() {
+    let prodId = details.id
+    addToCart(prodId)
+  }
 
   return (
     <div>
@@ -22,7 +28,7 @@ export default function Details() {
             <h1 className="font-bold text-2xl my-1">{details.name}</h1>
             <p className="my-2">{details.desc}</p>
             <p className="font-semibold mb-5">${details.price}.00</p>
-            <Button style="w-64" name="Add to Cart" />
+            <Button style="w-64" name="Add to Cart" addtocart={handleAddToCart}/>
           </div>
         </div>
       </div> : null}

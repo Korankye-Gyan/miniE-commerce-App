@@ -2,11 +2,16 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../context/userContext";
 import Button from "./Button";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { ShopContext } from "../context/cardContext";
 
 function Navbar() {
   const location = useLocation();
   const Navigate = useNavigate();
-  const { loggedIn, logOut, handlePlaceOrder } = useContext(UserContext);
+  const { loggedIn,  } = useContext(UserContext);
+  const { cartItems , details } = useContext(ShopContext)
+ 
+
+  let cartItemAmount = Object.values(cartItems).reduce((a, b) => a + b, 0)
   console.log(loggedIn);
   function handleLogin() {
     Navigate("/login");
@@ -26,7 +31,7 @@ function Navbar() {
             <span className="font-bold hover:text-blue-800">Home</span>
           </NavLink>
           <NavLink to="/Cart" className="mt-2">
-            <span className="font-bold hover:text-blue-800">Cart</span>
+            <span className="font-bold hover:text-blue-800">Cart {cartItemAmount > 0 && <span className="bg-blue-900 text-white px-2 py-1 ml-2">{cartItemAmount}</span>} </span>
           </NavLink>
         </div>
       )}

@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ShopContext } from "../context/cardContext";
 import { UserContext } from "../context/userContext";
 import { useLocation } from "react-router-dom";
 // import Product from '../pages/Product'
 
-const Button = ({ data, name, home, style, login }) => {
+const Button = ({ data, name, home, style, login ,addtocart }) => {
   const { handlePlaceOrder, placeOrder } = useContext(ShopContext);
   const { loggedIn, logOut, place } = useContext(UserContext);
-
   const location = useLocation();
   console.log(loggedIn);
   console.log(placeOrder);
@@ -16,6 +15,7 @@ const Button = ({ data, name, home, style, login }) => {
     let detail = e.target.value;
     // handlePlaceOrder(e, detail);
     handlePlaceOrder(detail);
+
     console.log(detail);
   }
 
@@ -33,7 +33,7 @@ const Button = ({ data, name, home, style, login }) => {
             ? details
             : name === "log out"
             ? logOut
-            : name === "Login" ? login  : home
+            : name === "Login" ? login : name ==="Add to Cart" ? addtocart : home
         }
       >
         {name}

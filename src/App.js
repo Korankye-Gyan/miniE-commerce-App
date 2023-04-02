@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import { UserContextProvider } from "./context/userContext";
 import { ShopContextProvider } from "./context/cardContext";
 import Details from "./pages/Details";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/details" element={<Details />} />
+            <Route path="/cart" element={<Cart />} />
+
           </Routes>
           </UserContextProvider>
           </ShopContextProvider>
