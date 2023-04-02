@@ -89,6 +89,8 @@ export function ShopContextProvider(props) {
         details,
         addToCart,
         cartItems,
+        setCartItems,
+        getFirstCart,
         removeFromCart,
         deleteFromCart,
         checkOut,
