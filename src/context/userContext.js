@@ -1,7 +1,8 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect , useContext} from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { ShopContext } from "./cardContext";
 
 export const UserContext = createContext("");
 
@@ -10,6 +11,7 @@ export function UserContextProvider(props) {
   const [registered, setRegistered] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [place, setPlace] = useState(false);
+  const {setCartItems, getFirstCart}   = useContext(ShopContext)
 
   const formik = useFormik({
     initialValues: {
@@ -57,6 +59,7 @@ export function UserContextProvider(props) {
   let user = JSON.parse(localStorage.getItem("values"));
 
   function logOut() {
+    setCartItems(getFirstCart())
     setLoggedIn(false);
     setPlace(false);
 

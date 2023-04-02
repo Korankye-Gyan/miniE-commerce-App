@@ -7,7 +7,7 @@ import { ShopContext } from "../context/cardContext";
 function Navbar() {
   const location = useLocation();
   const Navigate = useNavigate();
-  const { loggedIn,  } = useContext(UserContext);
+  const { loggedIn  } = useContext(UserContext);
   const { cartItems  } = useContext(ShopContext)
  
 
@@ -29,7 +29,7 @@ function Navbar() {
           <NavLink to="/" className="mt-2">
             <span className="text-gray-700 hover:text-blue-800">Home</span>
           </NavLink>
-          <NavLink to="/Cart" className="mt-2">
+          <NavLink to={loggedIn ? "/Cart" : "/login"} className="mt-2">
             <span className="text-gray-700 hover:text-blue-800">Cart {cartItemAmount > 0 && <span className="bg-blue-900 text-white px-2 py-1 ml-2">{cartItemAmount}</span>} </span>
           </NavLink>
         </div>
