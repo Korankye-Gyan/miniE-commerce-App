@@ -27,10 +27,10 @@ function Navbar() {
       location.pathname === "/register" ? null : (
         <div className="menu">
           <NavLink to="/" className="mt-2">
-            <span className="text-gray-700 hover:text-blue-800">Home</span>
+            <span className="text-gray-700 hover:text-blue-800 hidden sm:block">Home</span>
           </NavLink>
           <NavLink to={loggedIn ? "/Cart" : "/login"} className="mt-2">
-            <span className="text-gray-700 hover:text-blue-800">Cart {cartItemAmount > 0 && <span className="bg-blue-900 text-white px-2 py-1 ml-2">{cartItemAmount}</span>} </span>
+            <span className="text-gray-700 hover:text-blue-800 ">Cart {cartItemAmount > 0 && <span className="bg-blue-900 text-white px-2 py-1 ml-2">{cartItemAmount}</span>} </span>
           </NavLink>
         </div>
       )}
