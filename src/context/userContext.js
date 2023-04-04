@@ -32,6 +32,7 @@ export function UserContextProvider(props) {
       window.localStorage.setItem("values", JSON.stringify(values));
       resetForm({ values: "" });
       setRegistered(true);
+      
     },
   });
 

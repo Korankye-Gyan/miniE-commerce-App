@@ -8,11 +8,11 @@ export function ShopContextProvider(props) {
   const Navigate = useNavigate();
   const [placeOrder, setPlaceOrder] = useState(false);
   const [details, setDetails] = useState({});
-  const [cartStorage, setCartStorage] = useState([{
-        name : null,
-        price: null,
-        quantity:null,
-        total: null}])
+  // const [cartStorage, setCartStorage] = useState([{
+  //       name : null,
+  //       price: null,
+  //       quantity:null,
+  //       total: null}])
 
   const [cartItems, setCartItems] = useState(getFirstCart());
 
@@ -22,6 +22,7 @@ export function ShopContextProvider(props) {
     for (let i = 1; i < 9; i++) {
       cart[i] = 0;
     }
+    console.log(cart);
     return cart;
   }
 
@@ -45,7 +46,6 @@ export function ShopContextProvider(props) {
     
   }
 
-  console.log(cartStorage);
 
   function removeFromCart(prodId) {
     setCartItems((prev) => ({ ...prev, [prodId]: prev[prodId] - 1 }));
