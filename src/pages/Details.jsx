@@ -16,14 +16,14 @@ export default function Details() {
     <div>
       <Navbar />
      {details ? <div className="flex justify-center items-center h-96 mt-20">
-        <div className="flex  items-center ">
+        <div className="grid sm:grid-cols-2 items-center place-items-center">
           <img
             src={details.image}
             alt=""
-            className="mr-12 rounded-lg h-scree"
+            className=" rounded-lg "
           />
 
-          <div className="text-left flex flex-col">
+          <div className="text-center sm:text-left">
             <h1 className="font-bold text-2xl my-1">{details.name}</h1>
             <p className="my-2">{details.desc}</p>
             <p className="font-semibold mb-5">${details.price}.00</p>
